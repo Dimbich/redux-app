@@ -1,14 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {createStore, bindActionCreators} from 'redux';
-import * as actions from './actions';
+import {createStore} from 'redux';
+import {Provider} from 'react-redux';
+
 import reducer from './reducer';
-import Counter from './counter';
+import App from './componets/app';
 
 
 const store = createStore(reducer);
-const {dispatch} = store;
-const {inc, dec, clean} = bindActionCreators(actions,dispatch);
+
+//const {inc, dec, clean} = bindActionCreators(actions,dispatch);
 // const decDispatch = bindActionCreators(dec, dispatch);
 // const cleanDispatch = bindActionCreators(clean, dispatch);
 
@@ -19,17 +20,9 @@ const {inc, dec, clean} = bindActionCreators(actions,dispatch);
 
 // document.getElementById('clear').addEventListener('click',clean);    
 
- const update=()=>{
-   ReactDOM.render(<Counter 
-      counter={store.getState()}
-      inc = {inc}
-      dec = {dec}
-      clean = {clean} 
-      />,
-      document.getElementById('root'));
- }
 
- store.subscribe(update);
-
- update();
-
+ReactDOM.render(
+  <Provider store = {store}>
+    <App/>
+  </Provider>,
+  document.getElementById('root'));
