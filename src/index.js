@@ -1,37 +1,21 @@
-import {createStore} from 'redux';
-
-const reducer = (state = 0, action) => {
-    switch (action.type) {
-        case 'INC':
-            return state + 1;
-        case 'DEC':
-            return state - 1;
-        case 'CLEAN':
-            return 0;    
-        default:
-            return state;
-    }
-}
-
-const inc =()=>({type: 'INC'});
-const dec =()=>({type:'DEC'});
-const clean=(value)=>({type: 'CLEAN'});
+import {createStore, bindActionCreators} from 'redux';
+import * as actions from './actions';
+import reducer from './reducer';
 
 const store = createStore(reducer);
-
+const {dispatch} = store;
 const res = document.getElementById('counter');
 
-document.getElementById('inc').addEventListener('click',()=>{
-    store.dispatch(inc());    
-})
+const {inc, dec, clean} = bindActionCreators(actions,dispatch);
+// const decDispatch = bindActionCreators(dec, dispatch);
+// const cleanDispatch = bindActionCreators(clean, dispatch);
 
-document.getElementById('dec').addEventListener('click',()=>{
-    store.dispatch(dec());    
-})
 
-document.getElementById('clear').addEventListener('click',()=>{
-    store.dispatch(clean());    
-})
+document.getElementById('inc').addEventListener('click', inc);
+
+document.getElementById('dec').addEventListener('click', dec)
+
+document.getElementById('clear').addEventListener('click',clean);    
 
  const update=()=>{
     res.innerHTML = store.getState();
