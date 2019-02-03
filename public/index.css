@@ -1,0 +1,64 @@
+.app {
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(180deg, #0837B0 0%, #021E66 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.counter {
+    width: 300px;
+    height: 300px;
+    background: #FFFFFF;
+    box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.25);
+    border-radius: 4px;
+    text-align: center;
+    display: flex;
+}
+
+#counter {
+    display: block;
+    margin: auto;
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    line-height: normal;
+    font-size: 150px;
+    color: #000000;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.btns{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 34px;
+}
+
+.btn{
+    width: 65px;
+    height: 65px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    vertical-align: center;
+    text-align: center;
+}
+.btn:hover{
+    background: rgb(77, 191, 211);
+}
+
+.btn-dec{
+    background: #089C20;
+    border-radius: 4px;
+}
+
+.btn-inc{
+    background: #E7AA10;
+    border-radius: 4px;
+}
+
+.btn-clear{
+    background: #CF1C1C;
+    border-radius: 4px;
+}
